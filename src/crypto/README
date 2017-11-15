@@ -1,0 +1,11 @@
+To use these encryption decryption system you should modify the following files:
+
+	key:
+		choose a password
+	
+	not_encrypted_data.data:
+		The string that you want to encrypt
+	
+	encrypted_data.data: 
+		The string that you want to decrypt (this file is automatically
+		generated once you run encrypt.sh)
