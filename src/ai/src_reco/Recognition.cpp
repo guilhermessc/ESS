@@ -35,7 +35,7 @@ void write_image(Mat img){
 }
 int main(int argc, const char *argv[]) {
     string fn_haar = string("/home/cfcv/opencv-3.1.0/data/haarcascades/haarcascade_frontalface_alt.xml");
-    string fn_csv = string("/home/cfcv/Desktop/git/Face_Recognition/src_reco/csv.txt");
+    string fn_csv = string("../src_reco/csv.txt");
     int deviceId = atoi("0");
     vector<Mat> images;
     vector<int> labels;
@@ -46,22 +46,21 @@ int main(int argc, const char *argv[]) {
     string box_text;
     CascadeClassifier face_cascade;
     vector<Rect> faces;
-    
     read_csv(fn_csv, images, labels);
     
     int im_width = images[0].cols;
     int im_height = images[0].rows;
-    
+    cout << images.size() << endl; 
     //for (int i = 0; i < images.size(); ++i)
     //{
     //    imshow("teste", images[i]);
     //    waitKey(0);
     //}
+    
     Ptr<FaceRecognizer> model = createLBPHFaceRecognizer();
     model->train(images, labels);
-    
     face_cascade.load(fn_haar);
-    VideoCapture camera(0);
+    VideoCapture camera("tcpclientsrc host=192.168.25.13 port=5000 ! gdpdepay ! rtph264depay ! video/x-h264, width=1280, height=720, format=YUY2, framerate=49/1 ! ffdec_h264 ! autoconvert ! appsink sync=false");
     
     if(!camera.isOpened()) {
         cerr << "Capture Device ID " << deviceId << "cannot be opened." << endl;

@@ -1,0 +1,8 @@
+#Ignore all the pictures:
+*.png
+
+#Ignore also the folder of cutted pictures:
+personnes/*
+
+#Ignore file from visual studio code
+../anomaly_detection/__pycache__/*
