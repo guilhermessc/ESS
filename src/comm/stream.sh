@@ -2,8 +2,8 @@
 
 # TODO: Update parameter passing
 PWRD=raspberry
-LOCAL=pi@192.168.25.9
-REMOTE_PATH=/home/pi/Desktop/
+LOCAL=cfcv@192.168.15.9
+REMOTE_PATH=/home/cfcv/Desktop/Stream/
 TO_STREAM=to_stream/
 
 while :
