@@ -1,0 +1,30 @@
+Modular Based Testing Framework
+
+Implementing a modular framework will require testers to divide the application under test into separate units, functions, or sections, each of which will be tested in isolation. After breaking down the application into individual modules, a test script is created for each part and then combined to build larger tests in a hierarchical fashion. These larger sets of tests will begin to represent various test cases.
+
+https://smartbear.com/learn/automated-testing/test-automation-frameworks/
+
+Testes Unitários
+
+rasp-> Camera => Filmar por muito tempo e salvar os vídeos. //ter um script que avise quando isso dê errado
+	-> GPS => Receber muitas coordenadas para realizar calculos.
+	-> Armazen./Envio => Quantidade máxima de armazenamento excedida, com vídeos ainda sendo produzidos (em grande quantidade)
+		problema: Videos tem tamanho variável, logo excluir um arquivo não necessariamente significa que podemos salvar outro
+		podemos gravar grandes quantidades de vídeos e ver qual o de maior tamanho.
+	-> Acabou a energia, o que fazer?
+		resp:salvar os arquivos e desligar a rasp corretamente (implementar ainda)
+
+rasp-Cloud -> Envio de uma grande quantidade de itens em tempo real => gerar muitos arquivos e envia-los via web.
+
+cloud-User -> Receber do servidor os pacotes fora de ordem prejudicará a qualidade do stream
+
+
+
+    Teste Integrado
+ULTRA STRESS TEST => Gravar vídeo, enviar para o servidor e do servidor direto para o usuário, junto com as coordenadas 
+https://pt.stackoverflow.com/questions/115146/qual-a-diferen%C3%A7a-entre-teste-unit%C3%A1rio-e-teste-integrado
+
+
+Testes de UI automatizados
+
+	Será usado selenium com a ferramenta de Katalon
