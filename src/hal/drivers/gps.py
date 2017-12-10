@@ -19,7 +19,8 @@ class GPS(object):
 	def get_location(self):
 		if self.__first:
 			self.__first = False
-			return (self.__x_default, self.__y_default)
+			string = str(self.__x_default) + ',' + str(self.__y_default)
+			self.__sock.send(string.encode())
 		else:
 			walk = input('Simulate step direction [P/N/S/L/O]: ')
 			if walk == 'N':
@@ -35,7 +36,8 @@ class GPS(object):
 			else:
 				print("Direction not valid, try again.")
 
-			self.__sock.send(str(self.__x_atual, self.__y_atual))
+			string = str(self.__x_atual) + ',' + str(self.__y_atual)
+			self.__sock.send(string.encode())
 
 
 
