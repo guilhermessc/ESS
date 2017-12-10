@@ -1,3 +1,5 @@
+#!/bin/sh
+
 cd src/comm/
 mkdir to_stream
 cd ../../
