@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import socket
 
 class GPS(object):
@@ -32,12 +34,12 @@ class GPS(object):
 				pass
 			else:
 				print("Direction not valid, try again.")
-			
+
 			self.__sock.send(str(self.__x_atual, self.__y_atual))
 
 
 
 #--------   MAIN --------
-gps = GPS(('192.168.25.9',7000))
+gps = GPS(('192.168.15.9',7000))
 while True:
     gps.get_location()
