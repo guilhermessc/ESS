@@ -1,12 +1,19 @@
+import socket
+
 class GPS(object):
-	def __init__(self):
+	def __init__(self, address):
 		self.__step = 0.05
 		self.__first = True
 		self.__x_default = -34.8828968
 		self.__y_default = -8.0578381
 		self.__x_atual = self.__x_default
 		self.__y_atual = self.__y_default
-	
+
+        #socket
+        self.__sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        self.__addr = address
+        self.__sock.conect(self.__addr)
+
 	def get_location(self):
 		if self.__first:
 			self.__first = False
@@ -26,4 +33,11 @@ class GPS(object):
 			else:
 				print("Direction not valid, try again.")
 			
-			return (self.__x_atual, self.__y_atual)
+			self.__sock.send(str(self.__x_atual, self.__y_atual))
+
+
+
+#--------   MAIN --------
+gps = GPS(('192.168.25.9',7000))
+while True:
+    gps.get_location()
