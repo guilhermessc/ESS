@@ -11,10 +11,10 @@ class GPS(object):
 		self.__x_atual = self.__x_default
 		self.__y_atual = self.__y_default
 
-        #socket
-        self.__sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        self.__addr = address
-        self.__sock.conect(self.__addr)
+		#socket
+		self.__sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+		self.__addr = address
+		self.__sock.connect(self.__addr)
 
 	def get_location(self):
 		if self.__first:
