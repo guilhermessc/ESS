@@ -16,8 +16,8 @@ do
 		echo "Sending file: $FILE..."
 		sshpass -p "$PWRD" scp $TO_STREAM/$FILE $LOCAL:$REMOTE_PATH
 		RETVAL=$?
-		if [ $RETVAL -eq 0 ] ; then
-			rm $TO_STREAM/$FILE
-		fi
+#		if [ $RETVAL -eq 0 ] ; then
+#			rm $TO_STREAM/$FILE
+#		fi
 	done
 done

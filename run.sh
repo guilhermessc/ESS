@@ -7,6 +7,9 @@ touch take_video_log
 touch gps_driver_log
 
 cd src/comm/
+cd to_stream/
+rm *
+cd ..
 ./stream.sh > ../../stream_log &
 cd ../../
 
