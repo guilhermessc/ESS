@@ -42,6 +42,6 @@ class GPS(object):
 
 
 #--------   MAIN --------
-gps = GPS(('192.168.15.9',7000))
+gps = GPS(('172.20.10.2',7000))
 while True:
     gps.get_location()

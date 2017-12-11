@@ -2,7 +2,7 @@
 
 # TODO: Update parameter passing
 PWRD=raspberry
-LOCAL=cfcv@192.168.15.9
+LOCAL=cfcv@172.20.10.2
 REMOTE_PATH=/home/cfcv/Desktop/Stream/
 TO_STREAM=to_stream/
 
