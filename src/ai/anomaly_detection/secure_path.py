@@ -40,17 +40,27 @@ class SP(object):
                     else:
                         y += c
             self.__secure.append(lista)
+        self.__file.close()
 
     def show_paths(self):
         print("\nPaths: ", len(self.__secure))
         for path in self.__secure:
             print('\t',path)
 
+    def erase_path(self):
+        #print('Limpando caminho!')
+        self.__pathway = []
+
     def verify(self, x, y, string):
         #print('stirng:',string)
         #print('caminho armazenado:', self.__pathway)
+        if(len(self.__pathway) > 0):
+            p_anterior = self.__pathway[len(self.__pathway)-1]
+            if(p_anterior[0] == x and p_anterior[1] == y):
+                return
+
         if 'first' in string:
-            #print('entrou')
+            print('entrou')
             self.__pathway = []
             self.__possibilidades = []
             for path in self.__secure:
@@ -77,17 +87,18 @@ class SP(object):
                     #print('i: ',i,' r1:',r1,' r2:',r2,' d:',d)
                     if(d <= r1 or d <= r2):
                         return True
-                if len(self.__possibilidades) > 1:
-                    self.__possibilidades.remove(path)
+                self.__possibilidades.remove(path)
             return False
 
     def salvar_caminho(self):
         print("\n\t--------- Salvando caminho em arquivo ---------")
         self.__secure.append(self.__pathway)
+        print('secure:',self.__secure)
         p = self.__pathway
         string = str(p)
         self.__file = open(self.__filename, 'a')
-        self.__file.write(string)
+        self.__file.write(string+'\n')
+        self.__file.close()
     
     def dist(self, x, y, w, z):
         d = math.sqrt(math.pow(x-w, 2) + math.pow(y-z, 2))

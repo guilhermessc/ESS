@@ -5,6 +5,7 @@ class Server(object):
         print('Server is on, port:',port)
         self.__addr = ('192.168.15.9',port)
         self.__sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        self.__sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         self.__sock.bind(self.__addr)
         self.__sock.listen(10)
 

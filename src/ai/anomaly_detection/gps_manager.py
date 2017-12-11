@@ -21,7 +21,7 @@ SP = SP('Files/SafePaths.txt')
 SP.show_paths()
 
 status = ''
-c = ''
+c_str = ''
 flag = ''
 msg = ''
 print('\n--------------------------------\n')
@@ -32,7 +32,7 @@ while (not (servidor.wait_connection())):
 while True:
     data = servidor.receive(1024)
     data_str = data.decode()
-    #print('coordenadas recebidas: ', data_str)
+    print('coordenadas recebidas: ', data_str)
     x_str = ''
     y_str = ''
     msg = ''
@@ -46,29 +46,36 @@ while True:
         else:
             y_str += c
     
-    x = float(x_str)
-    y = float(y_str)
+    try:
+        x = float(x_str)
+        y = float(y_str)
+    except ValueError:
+        print('Valor não faz sentido, ignorado!')
+        continue
+
+    print('\nCoordenada: ', x, ", ", y)
     #print('x: ',x, ' y: ',y)
     if SA.verify(x,y):
         if flag == 'Unusual':
             choice = input('\n\t\tNOTIFICAÇÃO: Seu filho(a) percorreu um caminho diferente\n\t\tDeseja salvar este novo caminho?[y/n]')
-            msg = 'NOTIFICAÇÃO: Seu filho(a) percorreu um caminho diferente, deseja salvar este caminho?'
+            msg = 'NOTIFICACAO: Seu filho(a) percorreu um caminho diferente, deseja salvar este caminho?'
             if choice == 'y':
                 print('entrou ')
                 SP.salvar_caminho()
             flag = ''
         status = 'Safe Area'
-        c = ''
+        c_str = ''
+        SP.erase_path()
     else:
-        if c == 'first time':
-            c = 'normal'
+        if c_str == 'first time':
+            c_str = 'normal'
         
-        if c == '':
-            c = 'first time'
+        if c_str == '':
+            c_str = 'first time'
 
-        if SP.verify(x,y,c):
+        if SP.verify(x,y,c_str):
             status = 'Safe Path'
-            c = 'normal'
+            c_str = 'normal'
         else:
             if(not (status == 'Anomaly')):
                 print('\n\t\t---------------------------')
@@ -78,17 +85,17 @@ while True:
                 flag = 'Unusual'
             status = 'Anomaly'
 
-    print('\nCoordenada: ', x, ", ",y)
     print('-> Status: ',status,'\n')
     #json
     j = {
         'status': status,
         'message': msg,
-        'coord_y': y    
-        'coord_x': x,
+        'coord_y': y,    
+        'coord_x': x
     }
-    with open('data.json', 'w') as f:
-        j.dump(data, f)
+    f = open('data.json', 'w')
+    json.dump(j, f)
+    f.close()
     #espera 1 segundo
 #    time.sleep(1)
     
