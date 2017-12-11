@@ -86,7 +86,7 @@ class SP(object):
         self.__secure.append(self.__pathway)
         p = self.__pathway
         string = str(p)
-        self.__file = open(self.__filename, 'w')
+        self.__file = open(self.__filename, 'a')
         self.__file.write(string)
     
     def dist(self, x, y, w, z):

@@ -11,6 +11,8 @@ class Server(object):
     def wait_connection(self):
         print('Waiting connection...')
         self.__con, self.__client = self.__sock.accept()
+        print('Get connection from:', self.__client)
+        return True
     
     def receive(self, b):
         while True:
