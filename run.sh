@@ -11,11 +11,11 @@ cd src/comm/
 cd ../../
 
 cd src/hal/drivers/camera/
-./take_Video.py > take_video_log &
+./take_Video.py > ../../../../take_video_log &
 cd ../../../../
 
 
 # the gps driver is a simulation on the keyboard
 cd src/hal/drivers/
-./gps.py > gps_driver_log
+./gps.py
 
