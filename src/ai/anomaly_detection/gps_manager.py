@@ -93,10 +93,9 @@ while True:
         'coord_y': y,    
         'coord_x': x
     }
-    f = open('data.json', 'w')
+    f = open('../../../front_end/_site/assets/gps/gps.json', 'w')
     json.dump(j, f)
     f.close()
     #espera 1 segundo
 #    time.sleep(1)
     
-

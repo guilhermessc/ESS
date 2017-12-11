@@ -1,0 +1,156 @@
+---
+layout: default
+---
+<meta name="viewport" content="initial-scale=1.0">
+
+<script>
+var map;
+var marker;
+var myPos = {lat: -34.4, lng: 150.65}
+var safeArea;
+
+var flightPlanCoordinates = [
+  {lat: 37.772, lng: -122.214},
+  {lat: 21.291, lng: -157.821},
+  {lat: -18.142, lng: 178.431},
+  {lat: -27.467, lng: 153.027}
+];
+
+var route;
+
+// var map;
+function initMap() {
+
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: myPos,
+    zoom: 15,
+    // mapTypeId: 'terrain'
+  });
+
+  marker = new google.maps.Marker({
+    position: myPos,
+    map: map,
+    title: 'Mô Pirraia!'
+  });
+
+   safeArea = new google.maps.Circle({
+      strokeColor: '#00FF00',
+      strokeOpacity: 0.8,
+      strokeWeight: 2,
+      fillColor: '#00FF00',
+      fillOpacity: 0.35,
+      map: map,
+      center: myPos,
+      radius: 100
+    });
+
+    var route = new google.maps.Polyline({
+      strokeColor: '#000000',
+    strokeOpacity: 1.0,
+    strokeWeight: 2
+
+    });
+    // flightPath;
+
+    route.setMap(map);
+
+    // flightPath.push({lat = 0.0, lng = 0.0});
+};
+
+var jsongps;
+
+
+// function changeMarkerPosition(marker) {
+//     var latlng = new google.maps.LatLng(-24.397, 140.644);
+//     marker.setPosition(latlng);
+// }
+
+setInterval(function() {
+  $("#vidId").load(location.href + " #vidId>*", "");
+}, 5000);
+
+
+
+var caminho;
+setInterval(function(){
+  // caminho = route.getPath();
+  $.getJSON('/assets/gps/gps.json', function(data) {
+    // alert(data);
+    console.log(data);
+    jsongps = {lat: data.coord_x, lng: data.coord_y};
+    // alert(data.glossary.title);
+});
+   myPos.lng += 0.0001;
+   // caminho.push(myPos);
+   // $("#vidId").load(location.href + " #vidId>*", "");
+   // map.setCenter(myPos)
+   // var center = new google.maps.LatLng(10.23,123.45);
+   // map.setCenter(center);
+   marker.setPosition(jsongps);
+   // window.location.reload();
+}, 3000);
+
+// setInterval(function() {
+//   $("#map").load(location.href + " #map>*", "");
+//
+// }, 3000);
+
+</script>
+
+
+<hr>
+
+
+<!-- {% assign video_files = site.static_files | where: "video", true %} -->
+<!-- {% for myimage in image_files %}
+  {{ myimage.path }}
+{% endfor %} -->
+
+<style>
+     /* Always set the map height explicitly to define the size of the div
+      * element that contains the map. */
+     #map {
+       height: 50%;
+       width: 50%;
+     }
+     /* Optional: Makes the sample page fill the window. */
+     /*html, body {
+       height: 100%;
+       margin: 0;
+       padding: 0;
+     }*/
+   </style>
+ <!-- </head> -->
+ <!-- <body> -->
+ <div style="width:1000px;">
+
+
+     <div id="map" style="width:600px; float:left;"></div>
+
+     <!-- <script>
+
+     </script> -->
+
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAYaMQVLVsHpPfxXGyYgNE4Ql20p_lfTzU&callback=initMap"></script>
+
+
+  <!-- {% assign items = video_files | reverse %} -->
+  <div id="vidId" style="width:300px; float:right;">
+  {% assign ritems = site.static_files | reverse%}
+  {% for video in ritems limit: 6%}
+      <!-- {% capture post_count %} {{ post_count | plus: 1 }} {% endcapture %} -->
+      {% if video.path contains 'videos' %}
+          <center>
+          <p>{{site.baseurl}}{{video.path}}</p>
+          <video controls>
+              <source src="{{ site.baseurl }}{{ video.path }}" type="video/webm" alt="video"/>
+          </video>
+          </center>
+      <hr>
+      {% endif %}
+  {% endfor %}
+  </div>
+
+</div>
+
+<!-- {{post_count}} -->

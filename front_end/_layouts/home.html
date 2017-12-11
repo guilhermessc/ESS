@@ -1,0 +1,133 @@
+---
+layout: archive
+---
+
+
+<!-- Button to open the modal login form -->
+<button onclick="document.getElementById('id01').style.display='block'">Login</button>
+
+<!-- The Modal -->
+<div id="id01" class="modal">
+ <span onclick="document.getElementById('id01').style.display='none'"
+class="close" title="Close Modal">&times;</span>
+
+ <!-- Modal Content -->
+ <form class="modal-content animate" action="/videos">
+   <!-- <div class="imgcontainer">
+     <img src="img_avatar2.png" alt="Avatar" class="avatar">
+   </div> -->
+
+   <div class="container">
+     <label><b>Username</b></label>
+     <input type="text" placeholder="Enter Username" name="uname" required>
+
+     <label><b>Password</b></label>
+     <input type="password" placeholder="Enter Password" name="psw" required>
+
+     <button type="submit">Login</button>
+     <input type="checkbox" > Remember me
+   </div>
+
+   <div class="container" style="background-color:#f1f1f1">
+     <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+     <span class="psw">Forgot <a href="#">password?</a></span>
+   </div>
+ </form>
+</div>
+
+
+
+<!-- <input type="button" id="prompt1" value="Login"/>
+
+<script>
+var theButton = document.getElementById("prompt1");
+
+theButton.onclick = function () {
+    document.stylesheet
+    var thePrompt = window.open("", "height=250", "widht=250");
+    var theHTML = "";
+
+    theHTML += "<p>The server Neo-Tamagotchi requires a username and password. The server says: These are restricted files, please authenticate yourself.</p>";
+    theHTML += "<br/>";
+    theHTML += "Username: <input type='text' id='theUser' placeholder='Enter Username...'/>";
+    theHTML += "<br />";
+    theHTML += "Password: <input type='text' id='thePass' placeholder='Enter Password...'/>";
+    theHTML += "<br />";
+    theHTML += "<input type='button' value='OK' id='authOK'/>";
+    thePrompt.document.body.innerHTML = theHTML;
+
+    var theUser = thePrompt.document.getElementById("theUser").value;
+    var thePass = thePrompt.document.getElementById("thePass").value;
+    thePrompt.document.getElementById("authOK").onclick= function() {
+        console.log(theUser);
+        console.log(thePass);
+
+        alert(thePass+thePass);
+        if (thePass==='123' && thePass==='123') {
+            window.location='/videos/index.html';
+            // window.reload;
+        }
+        else {
+            // alert('wrong');
+            //alert('wtf_man '+theUser+' '+thePass);
+            //window.location='index.html';
+            window.location='/videos/index.html'
+        }
+        // doAuthentication(theUser, thePass);
+    }
+    // passwordCheck();
+}
+
+// function doAuthentication(theUser, thePass) {
+//     alert('lolol '+thePass+thePass);
+//     if (thePass==='123' && thePass==='123') {
+//         window.location='/videos/index.html';
+//         // window.reload;
+//     }
+//     else {
+//         // alert('wrong');
+//         alert(user+' '+password);
+//         window.location='index.html';
+//     }
+// }
+
+function passwordCheck(){
+    var login = prompt("Please enter the login.");
+    var password = prompt("Please enter the password.");
+    if (password==="123" && login==='123'){
+        window.location="/videos/index.html";
+    }
+    else {
+        // while(password !=="teste123"){
+        //     password = prompt("Please enter the password.");
+        alert('wrong password')
+        window.location="index.html";
+    }
+}
+// window.onload=passwordCheck;
+
+</script> -->
+
+
+<!--
+<h3 class="archive__subtitle">{{ site.data.ui-text[site.locale].recent_posts | default: "Recent Posts" }}</h3>
+ -->
+
+<!--
+{% for post in paginator.posts %}
+  {% include archive-single.html %}
+{% endfor %}
+
+{% include paginator.html %}
+ -->
+
+
+<!--
+{% for video in site.static_files reversed %}
+    {% if video.path contains 'videos' %}
+        <video controls>
+            <source src="{{ site.baseurl }}{{ video.path }}" type="video/webm" alt="video" />
+        </video>
+    {% endif %}
+{% endfor %}
+-->
