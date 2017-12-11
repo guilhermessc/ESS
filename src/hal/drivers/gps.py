@@ -4,7 +4,7 @@ import socket
 
 class GPS(object):
 	def __init__(self, address):
-		self.__step = 0.0005
+		self.__step = 0.00015
 		self.__first = True
 		self.__x_default = -8.038505
 		self.__y_default = -34.914499
