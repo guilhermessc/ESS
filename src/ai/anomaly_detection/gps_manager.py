@@ -35,7 +35,6 @@ while True:
     print('coordenadas recebidas: ', data_str)
     x_str = ''
     y_str = ''
-    msg = ''
     ordem = 0
     for c in data_str:
         if c == ',':
@@ -56,10 +55,12 @@ while True:
     print('\nCoordenada: ', x, ", ", y)
     #print('x: ',x, ' y: ',y)
     if SA.verify(x,y):
+        msg = 'Nothing Important'
         if flag == 'Unusual':
             choice = input('\n\t\tNOTIFICAÇÃO: Seu filho(a) percorreu um caminho diferente\n\t\tDeseja salvar este novo caminho?[y/n]')
             msg = 'NOTIFICACAO: Seu filho(a) percorreu um caminho diferente, deseja salvar este caminho?'
             if choice == 'y':
+                msg = 'Parabens voce cadastrou um novo caminho'
                 print('entrou ')
                 SP.salvar_caminho()
             flag = ''
@@ -86,6 +87,7 @@ while True:
             status = 'Anomaly'
 
     print('-> Status: ',status,'\n')
+    print('msg:', msg)
     #json
     j = {
         'status': status,

@@ -236,7 +236,7 @@ setInterval(function(){
     // alert(data);
     console.log(data);
     jsongps = {lat: data.coord_x, lng: data.coord_y};
-    jmsg = data.msg;
+    jmsg = data.message;
     jstatus = data.status;
     document.getElementById("msg").innerHTML = jmsg;
     document.getElementById("status").innerHTML = jstatus;
@@ -317,6 +317,14 @@ setInterval(function(){
       
   
       <!--  -->
+      
+          <center>
+          <p>/assets/videos/video000026.h264.mp4</p>
+          <video autoplay muted width="450">
+              <source src="/assets/videos/video000026.h264.mp4" type="video/mp4" alt="video"/>
+          </video>
+          </center>
+      <hr>
       
   
   </div>

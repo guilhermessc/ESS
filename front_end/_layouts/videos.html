@@ -76,7 +76,7 @@ setInterval(function(){
     // alert(data);
     console.log(data);
     jsongps = {lat: data.coord_x, lng: data.coord_y};
-    jmsg = data.msg;
+    jmsg = data.message;
     jstatus = data.status;
     document.getElementById("msg").innerHTML = jmsg;
     document.getElementById("status").innerHTML = jstatus;
