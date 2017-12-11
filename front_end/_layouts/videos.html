@@ -67,9 +67,7 @@ var jsongps;
 
 setInterval(function() {
   $("#vidId").load(location.href + " #vidId>*", "");
-}, 5000);
-
-
+}, 5300);
 
 var caminho;
 setInterval(function(){
@@ -78,6 +76,10 @@ setInterval(function(){
     // alert(data);
     console.log(data);
     jsongps = {lat: data.coord_x, lng: data.coord_y};
+    jmsg = data.msg;
+    jstatus = data.status;
+    document.getElementById("msg").innerHTML = jmsg;
+    document.getElementById("status").innerHTML = jstatus;
     // alert(data.glossary.title);
 });
    myPos.lng += 0.0001;
@@ -87,8 +89,9 @@ setInterval(function(){
    // var center = new google.maps.LatLng(10.23,123.45);
    // map.setCenter(center);
    marker.setPosition(jsongps);
+   map.setCenter(jsongps);
    // window.location.reload();
-}, 3000);
+}, 300);
 
 // setInterval(function() {
 //   $("#map").load(location.href + " #map>*", "");
@@ -97,6 +100,8 @@ setInterval(function(){
 
 </script>
 
+<p id="msg"></p>
+<p id="status"></p>
 
 <hr>
 
@@ -135,15 +140,15 @@ setInterval(function(){
 
 
   <!-- {% assign items = video_files | reverse %} -->
-  <div id="vidId" style="width:300px; float:right;">
+  <div id="vidId" style="width:300px; float:right; align:'left'">
   {% assign ritems = site.static_files | reverse%}
   {% for video in ritems limit: 6%}
       <!-- {% capture post_count %} {{ post_count | plus: 1 }} {% endcapture %} -->
       {% if video.path contains 'videos' %}
           <center>
           <p>{{site.baseurl}}{{video.path}}</p>
-          <video controls>
-              <source src="{{ site.baseurl }}{{ video.path }}" type="video/webm" alt="video"/>
+          <video autoplay muted width="450">
+              <source src="{{ site.baseurl }}{{ video.path }}" type="video/mp4" alt="video"/>
           </video>
           </center>
       <hr>
@@ -153,4 +158,21 @@ setInterval(function(){
 
 </div>
 
+<!-- 
+<style>
+  .botao {
+    background-image:url("/assets/sirene.jpg");
+    background-size:contain;
+    width: 400px
+    height: 100px;
+  }
+</style> -->
+
+<!-- <img src="/assets/sirene.jpg" alt="Smiley face" height="42" width="42"> -->
+
+<!-- <div class="botao">
+
+  <input type="button" placeholder="oi" style="padding:10;
+  width:400px; height: 100px; background-image: url(/assets/sirene.jpg);">
+</div> -->
 <!-- {{post_count}} -->

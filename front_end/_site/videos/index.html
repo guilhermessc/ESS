@@ -21,7 +21,7 @@
 
 
 
-<title>Neo-Tamagotchi</title>
+<title>Neomagotchi</title>
 
 
 
@@ -34,8 +34,8 @@
 <meta name="author" content="Neo-Tamagotchi">
 
 <meta property="og:locale" content="en">
-<meta property="og:site_name" content="Neo-Tamagotchi">
-<meta property="og:title" content="Neo-Tamagotchi">
+<meta property="og:site_name" content="Neomagotchi">
+<meta property="og:title" content="Neomagotchi">
 
 
   <link rel="canonical" href="http://localhost:4000/videos/">
@@ -78,7 +78,7 @@
     {
       "@context" : "http://schema.org",
       "@type" : "Person",
-      "name" : "Neo-Tamagotchi",
+      "name" : "Neomagotchi",
       "url" : "http://localhost:4000",
       "sameAs" : null
     }
@@ -93,7 +93,7 @@
 <!-- end SEO -->
 
 
-<link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="Neo-Tamagotchi Feed">
+<link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="Neomagotchi Feed">
 
 <!-- http://t.co/dKP3o1e -->
 <meta name="HandheldFriendly" content="True">
@@ -140,7 +140,7 @@
   <div class="masthead__inner-wrap">
     <div class="masthead__menu">
       <nav id="site-nav" class="greedy-nav">
-        <a class="site-title" href="http://localhost:4000/">Neo-Tamagotchi</a>
+        <a class="site-title" href="http://localhost:4000/">Neomagotchi</a>
         <ul class="visible-links">
           
             
@@ -227,9 +227,7 @@ var jsongps;
 
 setInterval(function() {
   $("#vidId").load(location.href + " #vidId>*", "");
-}, 5000);
-
-
+}, 5300);
 
 var caminho;
 setInterval(function(){
@@ -238,6 +236,10 @@ setInterval(function(){
     // alert(data);
     console.log(data);
     jsongps = {lat: data.coord_x, lng: data.coord_y};
+    jmsg = data.msg;
+    jstatus = data.status;
+    document.getElementById("msg").innerHTML = jmsg;
+    document.getElementById("status").innerHTML = jstatus;
     // alert(data.glossary.title);
 });
    myPos.lng += 0.0001;
@@ -247,8 +249,9 @@ setInterval(function(){
    // var center = new google.maps.LatLng(10.23,123.45);
    // map.setCenter(center);
    marker.setPosition(jsongps);
+   map.setCenter(jsongps);
    // window.location.reload();
-}, 3000);
+}, 300);
 
 // setInterval(function() {
 //   $("#map").load(location.href + " #map>*", "");
@@ -257,6 +260,8 @@ setInterval(function(){
 
 </script>
 
+<p id="msg"></p>
+<p id="status"></p>
 
 <hr>
 
@@ -293,7 +298,7 @@ setInterval(function(){
 
 
   <!--  -->
-  <div id="vidId" style="width:300px; float:right;">
+  <div id="vidId" style="width:300px; float:right; align:'left'">
   
   
       <!--  -->
@@ -312,20 +317,29 @@ setInterval(function(){
       
   
       <!--  -->
-      
-          <center>
-          <p>/assets/videos/005.webm</p>
-          <video controls>
-              <source src="/assets/videos/005.webm" type="video/webm" alt="video"/>
-          </video>
-          </center>
-      <hr>
       
   
   </div>
 
 </div>
 
+<!-- 
+<style>
+  .botao {
+    background-image:url("/assets/sirene.jpg");
+    background-size:contain;
+    width: 400px
+    height: 100px;
+  }
+</style> -->
+
+<!-- <img src="/assets/sirene.jpg" alt="Smiley face" height="42" width="42"> -->
+
+<!-- <div class="botao">
+
+  <input type="button" placeholder="oi" style="padding:10;
+  width:400px; height: 100px; background-image: url(/assets/sirene.jpg);">
+</div> -->
 <!--  6  -->
 
     </div>
@@ -351,7 +365,7 @@ setInterval(function(){
   </ul>
 </div>
 
-<div class="page__footer-copyright">&copy; 2017 Neo-Tamagotchi. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+<div class="page__footer-copyright">&copy; 2017 Neomagotchi. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
  -->
       </footer>
     <!-- </div> -->
